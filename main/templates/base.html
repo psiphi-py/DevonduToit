@@ -1,0 +1,197 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <!-- Local CSS (static) link-->
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+     <header>
+       {% for h in home %}
+        <div class="collapse bg-primary" id="navbarHeader">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-8 col-md-7 py-4">
+                <h4 class="text-white">Helpful Tips</h4>
+                <p class="text-light">All info on this web page is displayed on one page for ease of access, however,
+                if you would like to jump to certain paragraphs, simply click on the appropriate link on the right.
+                For the more tech savvy out there, this web page's source code is on GitHub, simply go to Contact for
+                the link.</p>
+              </div>
+              <div class="col-sm-4 offset-md-1 py-4">
+                <h4 class="text-white">Jump</h4>
+                <ul class="list-unstyled">
+                  <li><a href="/#skill_set" class="text-white">My Skill Set</a></li>
+                  <li><a href="/#learning" class="text-white">Skills I'm currently learning</a></li>
+                  <li><a href="/#who" class="text-white">So, who's this guy?</a></li>
+                  <li><a href="/#projects" class="text-white">Projects</a></li>
+                  <li><a href="/#contact" class="text-white">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navbar navbar-dark bg-info shadow-sm">
+          <div class="container d-flex justify-content-between">
+            <a href="/#who" class="navbar-brand d-flex align-items-center">
+              <img src="/media/{{h.h_icon}}" height="30px">
+              &nbsp;
+              <strong>{{h.h_name}}</strong>
+            </a>
+            <a name="top">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+            aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+       {% endfor %}
+     </header>
+
+      <br>
+
+      <section class="homeview text-center">
+          <div class="container">
+            <br><br>
+            {% for h in home %}
+              <h1 class="text-white">{{h.h_name}}</h1>
+              <p class="lead text-white">{{h.h_desc}}</p>
+              <p>
+                <a href="/#projects" class="btn btn-primary my-2">Projects</a>
+                <a href="/#contact" class="btn btn-info my-2">Contact</a>
+              </p>
+            {% endfor %}
+            <br>
+          </div>
+      </section>
+
+        <div class="album py-5 bg-light">
+          <a name="skill_set">
+          <div class="container">
+            <h1 class="text-muted">My Skill Set</h1>
+            <hr>
+            <div class="row">
+              {% for s in skills %}
+                <div class="col-md-4">
+                  <div class="card mb-4 shadow-sm">
+                    <img src="/media/{{s.s_image}}">
+                    <div class="card-body">
+                      <p class="card-text text-muted">{{s.s_desc}}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      <hr>
+
+        <div class="album py-5 bg-light">
+          <a name="learning">
+          <div class="container">
+            <h1 class="text-muted">Skills I'm currently learning</h1>
+            <hr>
+            <div class="row">
+              {% for l in learning %}
+                <div class="col-md-4">
+                  <div class="card mb-4 shadow-sm">
+                    <img src="/media/{{l.l_image}}">
+                    <div class="card-body">
+                      <p class="card-text text-muted">{{l.l_desc}}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      <hr>
+
+      <div class="bg-light">
+        <a name="who">
+        <div class="container">
+          <div class="row">
+            <h1 class="text-muted">So, who's this guy?</h1>&ensp;<h1 class="text-info">Devon du Toit</h1>
+          </div>
+          <div class="row">
+            {% for sec in second %}
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <img src="/media/{{sec.sec_image}}" width="100%">
+                  <div class="card-body">
+                    <p class="card-text text-muted">{{sec.sec_desc}}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+
+     <hr>
+
+     <div class="container">
+       <a name="projects">
+       <h1 class="text-muted">Projects</h1>
+       {% for p in projects%}
+         <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+          <div class="my-3 py-3">
+            <h2 class="text-info">{{p.p_name}}</h2>
+            <p class="lead text-muted">{{p.p_desc}}</p>
+             <a href="{{p.p_url}}" class="btn btn-info my-2">Visit</a>
+          </div>
+          <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+            <img src="/media/{{p.p_image}}" alt="project_image" width="100%" style = border-radius:21px;>
+          </div>
+         </div>
+         <hr>
+       {% endfor %}
+     </div>
+
+     <div class="bg-light">
+         <a name="contact">
+         <div class="container">
+             <h1 class="text-muted">Contact</h1>
+             <div class="row">
+                <p class="lead text-muted">For Inquiries, Help or General Info:</p>
+                 &emsp;
+                <p class="lead text-info">dutoitdevon@gmail.com</p>
+             </div>
+             <div class="row">
+                <p class="lead text-muted">For my GitHub portfolio:</p>
+                <div class="col md-4">
+                    <a href="https://github.com/psiphi-py" class="btn btn-info"><img src="{% static 'images/git.png' %}"
+                    width="30px">GitHub</a>
+                 </div>
+             </div>
+            <br>
+         </div>
+     </div>
+
+     <hr>
+
+     <div class="text-center">
+         <a href="/#top" class="btn btn-success"><img src="{% static 'images/top.png' %}"
+         width="30px">Back to Top</a>
+     </div>
+
+     <footer>
+       <p class="float-right text-muted">Devon du Toit, 2019</p>
+     </footer>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
