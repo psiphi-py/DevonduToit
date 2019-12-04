@@ -2,7 +2,10 @@
 
 <html lang="en">
 <head>
+  <!-- enables custom css to be implemented via static/styles.css -->
   {% load static %}
+
+  <!-- Bootstrap link to enable bootstrap functionality and usage -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -12,18 +15,21 @@
 <body>
 
      <header>
+       <!-- designing navbar with models from Homepage (Bootstrap navbar from example Album)-->
        {% for h in home %}
         <div class="collapse bg-primary" id="navbarHeader">
           <div class="container">
             <div class="row">
               <div class="col-sm-8 col-md-7 py-4">
                 <h4 class="text-white">Helpful Tips</h4>
+                <!-- Web Page is on one page to increase usability and ease of access -->
                 <p class="text-light">All info on this web page is displayed on one page for ease of access, however,
                 if you would like to jump to certain paragraphs, simply click on the appropriate link on the right.
                 For the more tech savvy out there, this web page's source code is on GitHub, simply go to Contact for
                 the link.</p>
               </div>
               <div class="col-sm-4 offset-md-1 py-4">
+                <!-- Links are connected to paragraphs to allow users to jump -->
                 <h4 class="text-white">Jump</h4>
                 <ul class="list-unstyled">
                   <li><a href="/#skill_set" class="text-white">My Skill Set</a></li>
@@ -53,15 +59,19 @@
        {% endfor %}
      </header>
 
+      <!-- break line for aesthetic purposes -->
       <br>
 
+     <!-- homeview is a custom div as to allow custom css to enable static background image -->
       <section class="homeview text-center">
           <div class="container">
             <br><br>
+            <!-- Again importing Homepage from models -->
             {% for h in home %}
               <h1 class="text-white">{{h.h_name}}</h1>
               <p class="lead text-white">{{h.h_desc}}</p>
               <p>
+                <!-- More jump links -->
                 <a href="/#projects" class="btn btn-primary my-2">Projects</a>
                 <a href="/#contact" class="btn btn-info my-2">Contact</a>
               </p>
@@ -76,6 +86,7 @@
             <h1 class="text-muted">My Skill Set</h1>
             <hr>
             <div class="row">
+              <!-- Importing Skillset from models (Things that I know well)-->
               {% for s in skills %}
                 <div class="col-md-4">
                   <div class="card mb-4 shadow-sm">
@@ -90,6 +101,7 @@
           </div>
         </div>
 
+      <!-- <hr> = horizontal line -->
       <hr>
 
         <div class="album py-5 bg-light">
@@ -98,6 +110,7 @@
             <h1 class="text-muted">Skills I'm currently learning</h1>
             <hr>
             <div class="row">
+              <!-- Importing Learning from models (Things that I'm still learning to master) -->
               {% for l in learning %}
                 <div class="col-md-4">
                   <div class="card mb-4 shadow-sm">
@@ -115,12 +128,14 @@
       <hr>
 
       <div class="bg-light">
+        <!-- Jump destination -->
         <a name="who">
         <div class="container">
           <div class="row">
             <h1 class="text-muted">So, who's this guy?</h1>&ensp;<h1 class="text-info">Devon du Toit</h1>
           </div>
           <div class="row">
+            <!-- Importing Second_Profile from models (Personal photos and bio) -->
             {% for sec in second %}
               <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
@@ -141,6 +156,7 @@
      <div class="container">
        <a name="projects">
        <h1 class="text-muted">Projects</h1>
+       <!-- Importing Projects from models (portfolio web pages) -->
        {% for p in projects%}
          <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
           <div class="my-3 py-3">

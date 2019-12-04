@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Homepage, Skillset, Learning, Alternative, Second_Profile, Projects
 
+# single page and function for simplicity and increased usability
 def index(request):
     home = Homepage.objects.all()
     skills = Skillset.objects.all()
